@@ -1,0 +1,30 @@
+﻿@model LcStaffDirectory.Models.LoginModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="login-div">
+    <h2>Login - Lethbridge College</h2>
+    <div class="inner-login-div">
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            @Html.LabelFor(m => m.UserName, new { @class="input-control"})
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @datatype = "Text", placeholder="sNumber" })<br />
+            @Html.LabelFor(m => m.Password, new { @class="input-control"})
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Password" })<br />
+            if (!string.IsNullOrWhiteSpace(Model.ErrorMsg)) { 
+                @Html.DisplayFor(m=>m.ErrorMsg, new { @class="error-msg"})
+                <p>Please try again or contact <a href="mailto:helpdesk@lethbridgecollege.ca">ITS HelpDesk</a></p>
+            }
+            @*@Html.LabelFor(m => m.RememberMe, new { @class="input-control"})
+            @Html.CheckBoxFor(m => m.RememberMe)<br />*@
+            <div class="col-md-12 submit-btn-div">
+                <input id="submit-btn" type="submit" name="login" value="Login" class="btn btn-primary">
+            </div>
+        }
+    </div>
+</div>

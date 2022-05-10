@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="imp_reporting_model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'imp_reporting.dbo.vwcorpdir' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwcorpdir">
+          <Key>
+            <PropertyRef Name="EMPLOYEEID" />
+          </Key>
+          <Property Name="EMPLOYEEID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="varchar" MaxLength="8000" />
+          <Property Name="LASTNAME" Type="varchar" MaxLength="8000" />
+          <Property Name="DISPLAYNAME" Type="varchar" MaxLength="8000" />
+          <Property Name="OFFICE" Type="varchar" MaxLength="8000" />
+          <Property Name="PHONE" Type="varchar" MaxLength="8000" />
+          <Property Name="MAIL" Type="varchar" MaxLength="8000" />
+          <Property Name="DIRECTORY" Type="varchar" MaxLength="8000" />
+          <Property Name="DIVISIONID" Type="varchar" MaxLength="8000" />
+          <Property Name="DIVISION" Type="varchar" MaxLength="8000" />
+          <Property Name="DEPTMENTID" Type="varchar" MaxLength="8000" />
+          <Property Name="DEPTMENT" Type="varchar" MaxLength="8000" />
+          <Property Name="POSITIONID" Type="varchar" MaxLength="8000" />
+          <Property Name="POSITION" Type="varchar" MaxLength="8000" />
+          <Property Name="MANAGER" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <EntityContainer Name="imp_reporting_modelStoreContainer">
+          <EntitySet Name="vwcorpdir" EntityType="Self.vwcorpdir" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwcorpdir].[EMPLOYEEID] AS [EMPLOYEEID], 
+    [vwcorpdir].[FIRSTNAME] AS [FIRSTNAME], 
+    [vwcorpdir].[LASTNAME] AS [LASTNAME], 
+    [vwcorpdir].[DISPLAYNAME] AS [DISPLAYNAME], 
+    [vwcorpdir].[OFFICE] AS [OFFICE], 
+    [vwcorpdir].[PHONE] AS [PHONE], 
+    [vwcorpdir].[MAIL] AS [MAIL], 
+    [vwcorpdir].[DIRECTORY] AS [DIRECTORY], 
+    [vwcorpdir].[DIVISIONID] AS [DIVISIONID], 
+    [vwcorpdir].[DIVISION] AS [DIVISION], 
+    [vwcorpdir].[DEPTMENTID] AS [DEPTMENTID], 
+    [vwcorpdir].[DEPTMENT] AS [DEPTMENT], 
+    [vwcorpdir].[POSITIONID] AS [POSITIONID], 
+    [vwcorpdir].[POSITION] AS [POSITION], 
+    [vwcorpdir].[MANAGER] AS [MANAGER]
+    FROM [dbo].[vwcorpdir] AS [vwcorpdir]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="imp_reporting_model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="vwcorpdir">
+          <Key>
+            <PropertyRef Name="EMPLOYEEID" />
+          </Key>
+          <Property Name="EMPLOYEEID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="LASTNAME" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="DISPLAYNAME" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="OFFICE" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="MAIL" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECTORY" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="DIVISIONID" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="DIVISION" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="DEPTMENTID" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="DEPTMENT" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="POSITIONID" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="POSITION" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="MANAGER" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="imp_reporting_entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="vwcorpdirs" EntityType="Self.vwcorpdir" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="imp_reporting_modelStoreContainer" CdmEntityContainer="imp_reporting_entities">
+          <EntitySetMapping Name="vwcorpdirs">
+            <EntityTypeMapping TypeName="imp_reporting_model.vwcorpdir">
+              <MappingFragment StoreEntitySet="vwcorpdir">
+                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+                <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+                <ScalarProperty Name="OFFICE" ColumnName="OFFICE" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+                <ScalarProperty Name="DIRECTORY" ColumnName="DIRECTORY" />
+                <ScalarProperty Name="DIVISIONID" ColumnName="DIVISIONID" />
+                <ScalarProperty Name="DIVISION" ColumnName="DIVISION" />
+                <ScalarProperty Name="DEPTMENTID" ColumnName="DEPTMENTID" />
+                <ScalarProperty Name="DEPTMENT" ColumnName="DEPTMENT" />
+                <ScalarProperty Name="POSITIONID" ColumnName="POSITIONID" />
+                <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+                <ScalarProperty Name="MANAGER" ColumnName="MANAGER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="staffdirectory_model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="snumber" />
+          </Key>
+          <Property Name="snumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="30" />
+          <Property Name="last_name" Type="varchar" MaxLength="30" />
+          <Property Name="full_name" Type="varchar" MaxLength="30" />
+          <Property Name="room" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="show" Type="bit" />
+          <Property Name="school_code" Type="varchar" MaxLength="50" />
+          <Property Name="school_name" Type="varchar" MaxLength="50" />
+          <Property Name="dept_code" Type="varchar" MaxLength="50" />
+          <Property Name="dept_name" Type="varchar" MaxLength="50" />
+          <Property Name="instr_code" Type="varchar" MaxLength="50" />
+          <Property Name="instr_title" Type="varchar" MaxLength="200" />
+          <Property Name="mgr_id" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="staffdirectory_modelStoreContainer">
+          <EntitySet Name="staff" EntityType="Self.staff" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="staffdirectory_model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="staffdirectory_entities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="staffs" EntityType="staffdirectory_model.staff" />
+        </EntityContainer>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="snumber" />
+          </Key>
+          <Property Name="snumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="first_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="full_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="room" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="show" Type="Boolean" />
+          <Property Name="school_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="school_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dept_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dept_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="instr_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="instr_title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="mgr_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="staffdirectory_modelStoreContainer" CdmEntityContainer="staffdirectory_entities" >
+          <EntitySetMapping Name="staffs">
+            <EntityTypeMapping TypeName="staffdirectory_model.staff">
+              <MappingFragment StoreEntitySet="staff">
+                <ScalarProperty Name="mgr_id" ColumnName="mgr_id" />
+                <ScalarProperty Name="instr_title" ColumnName="instr_title" />
+                <ScalarProperty Name="instr_code" ColumnName="instr_code" />
+                <ScalarProperty Name="dept_name" ColumnName="dept_name" />
+                <ScalarProperty Name="dept_code" ColumnName="dept_code" />
+                <ScalarProperty Name="school_name" ColumnName="school_name" />
+                <ScalarProperty Name="school_code" ColumnName="school_code" />
+                <ScalarProperty Name="show" ColumnName="show" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="room" ColumnName="room" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="snumber" ColumnName="snumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

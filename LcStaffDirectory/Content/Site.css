@@ -1,0 +1,180 @@
+﻿body {
+    background-color:#EFEFEF;
+    min-width:1200px;
+    width:1200px;
+    /*padding-top: 50px;
+    padding-bottom: 20px;*/
+}
+
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    min-width: 1200px;
+    width: 1200px;
+    margin:5px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*paging*/
+.paging {
+    /*float:left;*/
+    height: 35px;
+    font-size: small;
+    clear: both;
+    position: relative;
+    bottom: -15px;
+    margin-right: 5px;
+    min-width: 1130px;
+    width: 1130px;
+}
+
+.page-size {
+    float: right;
+    width: 60px;
+    margin: 5px 100px 5px 0;
+    white-space: nowrap;
+}
+
+.page-first,
+.page-prev,
+.page-next,
+.page-last {
+    float: right;
+    width: 25px;
+    padding: 5px;
+    margin: 0px 7px;
+}
+
+.page-num {
+    float: right;
+    text-align: center;
+    width: 100px;
+    margin: 5px;
+}
+
+.page-results {
+    float: left;
+    width: 150px;
+    margin: 5px 0 -10px 0;
+}
+
+/* Styling options */
+
+.rdo-margin {
+    margin-top: 5px;
+}
+
+.search-container {
+    min-height: 80px;
+}
+
+.results table tbody,
+.results table thead {
+    display: block;
+}
+
+.results table tbody {
+    overflow: auto;
+    max-height: 225px;
+}
+
+.results table th,
+.results table td {
+    vertical-align: middle;
+}
+
+
+.results table th.col-mw-123,
+.results table td.col-mw-123 {
+    min-width: 123px;
+}
+
+.results table th.col-mw-140,
+.results table td.col-mw-140 {
+    min-width: 140px;
+}
+
+.results table th.col-mw-360,
+.results table td.col-mw-360 {
+    min-width: 360px;
+}
+
+.col-mw-220 {
+    min-width: 220px;
+}
+
+.button {
+    padding: 2px 10px;
+    display: inline;
+    background: #6D9EC4;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    text-decoration: none !important;
+    color: white;
+}
+
+.button:hover {
+    background-position: 0 -48px;
+    background-color: #669BD1;
+    color: black;
+}
+
+.button:disabled,
+.button[disabled],
+.button:disabled:hover {
+    background-color: #EFEFEF;
+}
+
+.pag-button,
+.pag-button:hover{
+    background: #C0C0C0;
+    border: none;
+}
+
+input, textarea, select, .options {
+    border:1px solid lightgrey;
+    background: #EFF8FB;
+    color: #47433F;
+    padding: 0px 6px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border: 4px;
+}
+
+.options table {
+    margin-bottom: 10px;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #EFEFEF;
+}
+
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+    background-color: lightblue;
+}
+

@@ -1,0 +1,192 @@
+﻿@model  LcStaffDirectory.Models.DirectoryModel
+@{
+    ViewBag.Title = "Staff Directory";
+}
+@if (Model == null)
+{
+    <label>loading...</label>
+}
+else
+{
+    @Html.HiddenFor(m => m.Validated, new { id = "hf-validated" })
+    <div class="container">
+        @*<h2>@ViewBag.Title</h2>*@
+        @using (Html.BeginForm("Index", "Staff", FormMethod.Post, new { DefaultButton = "search-btn" }))
+        {
+            <div class="LookupType options row">
+                <h5 class="col-md-2"><b><i>List Employees:</i></b></h5>
+                @{int i = 0;}
+                @foreach (var type in Model.SearchTypes)
+                {
+                    <div class="col-md-2 rdo-margin col-mw-220">
+                        @if (type.Selected)
+                        {
+                            @Html.RadioButtonFor(model => model.SearchType, type.Value, new { @id = "SearchType" + i, @class = "rdo-btn", @checked = "checked" });
+                        }
+                        else
+                        {
+                            @Html.RadioButtonFor(model => model.SearchType, type.Value, new { @id = "SearchType" + i, @class = "rdo-btn" });
+                        }
+                        @Html.Label(type.Text, new { @for = "SearchType" + i, @class = "control-label" })
+                    </div>
+                    i++;
+                }
+            </div>
+            @Html.HiddenFor(m => m.Pagination.PageIndex, new { id = "hf-pIndex" })
+            @Html.HiddenFor(m => m.Pagination.PageSize, new { id = "hf-pSize" })
+
+            <br />
+            <div class="search-container">
+                <div id="0" class="search-type options row">
+                    <table>
+                        <tr>
+                            <td colspan="3" class="col-md-12">
+                                <strong>Search for Staff</strong> - <font size=2><i>Type the Name of the Person you would like to search for.</i></font>
+                            </td>
+                        </tr>
+                        <tr class="col-md-12">
+                            <td class="col-md-2">
+                                <!--SEARCH FIELD -->
+                                @Html.EnumDropDownListFor(m => m.SearchNameTitleType, new { @class = "text ui-widget-content ui-corner-all searchfield" })
+                            </td>
+                            <td class="col-md-2">
+                                <!-- SEARCH TYPE -->
+                                @Html.EnumDropDownListFor(m => m.SearchOperator, new { @class = "text ui-widget-content ui-corner-all searchfield" })
+                            </td>
+                            <td class="col-md-3">
+                                <!-- SEARCH FIELD -->
+                                @Html.TextBoxFor(m => m.NameTitleField, new { @class = "text ui-widget-content ui-corner-all searchfield" })
+                            </td>
+                            <td class="col-md-5">
+                                <input id="search-btn" type="submit" name="submit" value="Search" class="button submit">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="1" class="search-type options row">
+                    <table>
+                        <tr>
+                            <td colspan="2" class="col-md-12">
+                                <strong>Department Listings</strong> - <font size=2><i>Use the drop down arrow to select a department to list all staff members in that department.</i></font>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-3">
+                                @Html.DropDownListFor(x => x.DeptType, new SelectList(Model.DeptTypes, "Value", "Text"), new { @class = "text ui-widget-content ui-corner-all searchfield" })
+                            </td>
+                            <td class="col-md-9">
+                                <input id="search-btn" type="submit" name="submit" value="List Staff" class="button submit">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="2" class="search-type options row">
+                    <table>
+                        <tr>
+                            <td colspan="2" class="col-md-12">
+                                <strong>Alphabetical Listings</strong> - <font size=2><i>List all staff alphabetically by last name.</i></font>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-1">
+                                @Html.EnumDropDownListFor(m => m.AlphaLookup, new { @class = "text ui-widget-content ui-corner-all searchfield" })
+                            </td>
+                            <td class="col-md-11">
+                                <input id="search-btn" type="submit" name="submit" value="List Staff" class="button submit">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        }
+        @if (Model.EmployeeList.Any())
+        {
+            <div class="paging">
+            
+                    <div class="page-last">
+                        <input id="lastPage" type="image" title="Last Page" value="" src="~/Content/images/last.png" class="button pag-button" @(Model.Pagination.PageIndex < Model.Pagination.PageCount ? "" : "disabled=disabled") />
+                    </div>
+                    <div class="page-next">
+                        <input id="nextPage" type="image" title="Next Page" value="" src="~/Content/images/next.png" class="button pag-button" @(Model.Pagination.PageIndex < Model.Pagination.PageCount ? "" : "disabled=disabled") />
+                    </div>
+                    <div class="page-num">
+                        @Html.LabelFor(m => m.Pagination.PageIndex, new { @class = "control-label" }) @Html.DisplayFor(m => m.Pagination.PageIndex, new { @class = "text ui-widget-content ui-corner-all" }) of @Html.DisplayFor(m => m.Pagination.PageCount, new { @class = "text ui-widget-content ui-corner-all" })
+                    </div>
+                    <div class="page-prev">
+                        <input id="prevPage" type="image" title="Previous Page" value="" src="~/Content/images/prev.png" class="button pag-button" @(Model.Pagination.PageIndex > 1 ? "" : "disabled=disabled") />
+                    </div>
+                    <div class="page-first">
+                        <input id="firstPage" type="image" title="First Page" value="" src="~/Content/images/first.png" class="button pag-button" @(Model.Pagination.PageIndex > 1 ? "" : "disabled=disabled") />
+                    </div>
+                    <div class="page-size">
+                        @Html.LabelFor(m => m.Pagination.PageSizes, new { @class = "control-label" })
+                        @Html.DropDownListFor(m => m.Pagination.PageSize, Model.Pagination.PageSizes, string.Empty, new { @id = "pSize", @class = "text ui-widget-content ui-corner-all" })
+                    </div>
+                    <div class="page-results">
+                        @Html.LabelFor(m => m.Pagination.RecCount, new { @class = "control-label" })
+                        @Html.DisplayFor(m => m.Pagination.RecCount, new { @class = "text ui-widget-content ui-corner-all" })
+                    </div>
+                @Html.HiddenFor(m => m.Pagination.PageCount, new { id = "hf-pCount" })
+
+            </div>
+            <br />
+            <div class="results table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr bgcolor="#C0C0C0">
+                            <th class="col-mw-140">
+                                <label>Last Name</label>
+                            </th>
+                            <th class="col-mw-140">
+                                <label>First Name</label>
+                            </th>
+                            <th class="col-mw-360">
+                                <label>Email</label> / <label>Telephone</label>
+                            </th>
+                            <th class="col-mw-360">
+                                <label>Title</label> / <label>Department</label>
+                            </th>
+                            <th class="col-mw-140">
+                                <label>Room</label>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.EmployeeList.Count > 0)
+                        {
+                            foreach (var employee in Model.EmployeeList)
+                            {
+                                    <tr>
+                                        <td class="col-mw-140">
+                                            @employee.LastName
+                                        </td>
+                                        <td class="col-mw-140">
+                                            @employee.FirstName
+                                        </td>
+                                        <td class="col-mw-360">
+                                            <strong>Phone:</strong> @employee.Phone
+                                            <br />
+                                            <strong>Email:</strong> @employee.Email
+                                        </td>
+                                        <td class="col-mw-360">
+                                            <strong>Title:</strong> @employee.InstrTitle
+                                            <br />
+                                            <strong>Dept:</strong> @employee.DeptName
+                                        </td>
+                                        <td class="col-mw-123">
+                                            @employee.Room
+                                        </td>
+                                    </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        <div class="footnotes">
+            <i>Unauthorized use of this directory for any commercial purposes whatsoever is strictly forbidden.</i>
+            <br>
+            <i>The Online Campus Directory is refreshed every 24 hours, Monday - Friday.</i>
+        </div>
+    </div>
+}
